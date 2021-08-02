@@ -1,30 +1,6 @@
 extends ./pug/templates/template
 block home
       //- ------------------------------------------------------------------------ -//
-      //-                                navigation                                -//
-      //- ------------------------------------------------------------------------ -//
-      .navigation
-         .container
-            nav.navbar.navbar-dark.navbar-expand-lg
-               a.navbar-brand.text-uppercase(href="index.html") realstate
-                  strong GDL
-               button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbar-main' aria-controls='navbar-main' aria-expanded='false' aria-label='Mostrar navegacion')
-                  span.navbar-toggler-icon
-               #navbar-main.collapse.navbar-collapse.u-transition
-                  ul.navbar-nav.w-100.justify-content-end
-                     li.nav-item
-                        a.nav-link(href="#") inicio
-                     li.nav-item
-                        a.nav-link(href="#") nosotros
-                     li.nav-item.dropdown
-                        a#navbar-dropdown-nosotros.nav-link.dropdown-toggle(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") anuncios
-                        .dropdown-menu(aria-labelledby="navbar-dropdown-nosotros")
-                           a.dropdown-item(href="#") casa 1
-                           a.dropdown-item(href="#") casa 2
-                           a.dropdown-item(href="#") casa 3
-                     li.nav-item
-                        a.nav-link(href="#") contacto
-      //- ------------------------------------------------------------------------ -//
       //-                                  header                                  -//
       //- ------------------------------------------------------------------------ -//
       header.header
@@ -33,21 +9,21 @@ block home
                li.active(data-target="#slider-principal" data-slide-to="0")
                li(data-target="#slider-principal" data-slide-to="1")
             .carousel-inner
-               figure.carousel-item.active.u-transition-s
+               .carousel-item.active.u-transition-s
                   img.d-block.w-100(src="assets/img/slide1.jpg", alt="Primer slider")
                   .container.p-0m-0
                      .row.no-gutters.justify-content-between
                         .col-lg-6
-                           figcaption.carousel-caption.d-none.d-lg-block.text-left
+                           .carousel-caption.d-none.d-lg-block.text-left
                               h2.heading-1 Casa de lujo en Zona Exclusiva GDL
                         .col-lg-4
-                           figcaption.carousel-caption.d-none.d-md-block
+                           .carousel-caption.d-none.d-md-block
                               h4.heading-2.text-uppercase.py-3 en venta
                               p.price $ 125,000
                               a.btn.btn-block.text-uppercase(href="#") mas información
-               figure.carousel-item.u-transition-s
+               .carousel-item.u-transition-s
                   img.d-block.w-100(src="assets/img/slide2.jpg", alt="Segundo slider")
-                  figcaption.carousel-caption.d-none.d-md-block
+                  .carousel-caption.d-none.d-md-block
                      h2.heading-1.text-center Encuentra propiedades de lujo
             a.carousel-control-prev(href="#slider-principal" role="button" data-slide="prev") 
                span.carousel-control-prev-icon(aria-hidden="true")
@@ -56,96 +32,82 @@ block home
                span.carousel-control-next-icon(aria-hidden="true")
                span.sr-only Imagen siguiente
       main
-         article
-            //- ------------------------------------------------------------------------ -//
-            //-                                 about us                                 -//
-            //- ------------------------------------------------------------------------ -//
-            section.container.about-us.text-center.my-5
-               h2.mb-5.text-capitalize más sobre nosotros
-               .row.px-md-3.px-lg-0
-                  .col-lg-4.col-md-4.mb-4.mb-md-0
-                     span.icon.security 
-                     h3.heading-sub.text-uppercase.mb-3 seguridad
-                     p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum aliquid iure excepturi velit quos?
-                  .col-lg-4.col-md-4.mb-4.mb-md-0
-                     span.icon.price 
-                     h3.heading-sub.text-uppercase.mb-3 el mejor precio
-                     p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum aliquid iure excepturi velit quos?
-                  .col-lg-4.col-md-4
-                     span.icon.time 
-                     h3.heading-sub.text-uppercase.mb-3 disponibilidad inmediata
-                     p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum aliquid iure excepturi velit quos?
-            //- ------------------------------------------------------------------------ -//
-            //-                                  houses                                  -//
-            //- ------------------------------------------------------------------------ -//
-            section.container.adventisements
-               h2.text-capitalize.text-center.mb-5 casas y depas en venta
-               .row.px-md-4.px-lg-0
-                  .col-lg-4.col-md-6
-                     +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-                  .col-lg-4.col-md-6
-                     +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-                  .col-lg-4.col-md-6
-                     +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-                  .col-lg-4.col-md-6
-                     +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-                  .col-lg-4.col-md-6
-                     +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-                  .col-lg-4.col-md-6
-                     +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-            //- ------------------------------------------------------------------------ -//
-            //-                                  banner                                  -//
-            //- ------------------------------------------------------------------------ -//
-            section.banner
-               .container.text-white
-                  h3.heading Encuentra la casa de tus sueños
-                  p.mb-5 LLena los formularios de contacto y un asesor se pondra en contacto contigo a la brevedad
-                  a.btn.btn-orange.text-uppercase.py-2(href="#") contáctanos
-            //- ------------------------------------------------------------------------ -//
-            //-                                   blog                                   -//
-            //- ------------------------------------------------------------------------ -//
-            section.my-5
-               .container
-                  .row
-                     .col-lg-8
-                        h2.text-capitalize.text-center.mb-5 nuestro blog
-                        +post('blog1.jpg', 'Terraza en el techo de tu casa.', ['20/10/2021','Admin'])
-                           p Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nulla qui provident doloribus, incidunt ipsa magni temporibus iure ad quod?
-                        +post('blog2.jpg', 'Guia para decorar tu casa.', ['30/12/2021','Admin'])
-                           p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos perspiciatis culpa dicta nihil quaerat similique voluptatibus animi corrupti voluptate minima?
-                     .col-lg-4
-                        h2.text-capitalize.text-center.mb-5 testimoniales
-                        .testimonials
-                           #testimoniales-slider.carousel.slide(data-ride="carousel")
-                              .carousel-inner.p-5
-                                 .carousel-item.active.u-transition
-                                    p.paragraph Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates ad nulla, tempore rem earum error vel perferendis expedita maiores hic?
-                                    p.author.text-capitalize.mt-4.text-right - persona 1
-                                 .carousel-item.u-transition
-                                    p.paragraph Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates ad nulla, tempore rem earum error vel perferendis expedita maiores hic?
-                                    p.author.text-capitalize.mt-4.text-right - persona 2
-                                 .carousel-item.u-transition
-                                    p.paragraph Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates ad nulla, tempore rem earum error vel perferendis expedita maiores hic?
-                                    p.author.text-capitalize.mt-4.text-right - persona 3
-                              a.carousel-control-prev(href="#testimoniales-slider" role="button" data-slide="prev") 
-                                 span.carousel-control-prev-icon(aria-hidden="true")
-                                 span.sr-only Testimonial anterior
-                              a.carousel-control-next(href="#testimoniales-slider" role="button" data-slide="next") 
-                                 span.carousel-control-next-icon(aria-hidden="true")
-                                 span.sr-only Testimonial siguiente
-      footer.bg-dark               
-         .container
-            .row.align-items-centerjustify-content-center.py-4
-               ul.nav.text-uppercase.text-center.justify-content-center.justify-content-lg-start.flex-column.flex-md-row.col-lg-8
-                  li.nav-item
-                     a.nav-link.text-white(href="#") inicio
-                  li.nav-item
-                     a.nav-link.text-white(href="#") nosotros
-                  li.nav-item
-                     a.nav-link.text-white(href="#") anuncios
-                  li.nav-item
-                     a.nav-link.text-white(href="#") contacto
-               p.text-capitalize.text-muted.text-center.m-0.py-1.text-lg-right.mt-4.mt-lg-0.col-lg-4
-                  | 2021 derechos reservados
+         //- ------------------------------------------------------------------------ -//
+         //-                                 about us                                 -//
+         //- ------------------------------------------------------------------------ -//
+         section.container.about-us.text-center.my-5
+            h2.mb-5.text-capitalize más sobre nosotros
+            .row.px-md-3.px-lg-0
+               .col-lg-4.col-md-4.mb-4.mb-md-0
+                  span.icon.security 
+                  h3.heading-sub.text-uppercase.mb-3 seguridad
+                  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum aliquid iure excepturi velit quos?
+               .col-lg-4.col-md-4.mb-4.mb-md-0
+                  span.icon.price 
+                  h3.heading-sub.text-uppercase.mb-3 el mejor precio
+                  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum aliquid iure excepturi velit quos?
+               .col-lg-4.col-md-4
+                  span.icon.time 
+                  h3.heading-sub.text-uppercase.mb-3 disponibilidad inmediata
+                  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum aliquid iure excepturi velit quos?
+         //- ------------------------------------------------------------------------ -//
+         //-                                  houses                                  -//
+         //- ------------------------------------------------------------------------ -//
+         section.container.adventisements
+            h2.text-capitalize.text-center.mb-5 casas y depas en venta
+            .row.px-md-4.px-lg-0
+               .col-lg-4.col-md-6
+                  +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
+               .col-lg-4.col-md-6
+                  +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
+               .col-lg-4.col-md-6
+                  +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
+               .col-lg-4.col-md-6
+                  +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
+               .col-lg-4.col-md-6
+                  +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
+               .col-lg-4.col-md-6
+                  +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
+         //- ------------------------------------------------------------------------ -//
+         //-                                  banner                                  -//
+         //- ------------------------------------------------------------------------ -//
+         section.banner
+            .container.text-white
+               h3.heading Encuentra la casa de tus sueños
+               p.mb-5 LLena los formularios de contacto y un asesor se pondra en contacto contigo a la brevedad
+               a.btn.btn-orange.text-uppercase.py-2(href="#") contáctanos
+         //- ------------------------------------------------------------------------ -//
+         //-                                   blog                                   -//
+         //- ------------------------------------------------------------------------ -//
+         section.my-5
+            .container
+               .row
+                  .col-lg-8
+                     h2.text-capitalize.text-center.mb-5 nuestro blog
+                     +post('blog1.jpg', 'Terraza en el techo de tu casa.', ['20/10/2021','Admin'])
+                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nulla qui provident doloribus, incidunt ipsa magni temporibus iure ad quod?
+                     +post('blog2.jpg', 'Guia para decorar tu casa.', ['30/12/2021','Admin'])
+                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos perspiciatis culpa dicta nihil quaerat similique voluptatibus animi corrupti voluptate minima?
+                  .col-lg-4
+                     h2.text-capitalize.text-center.mb-5 testimoniales
+                     .testimonials
+                        #testimoniales-slider.carousel.slide(data-ride="carousel")
+                           .carousel-inner.p-5
+                              .carousel-item.active.u-transition
+                                 p.paragraph Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates ad nulla, tempore rem earum error vel perferendis expedita maiores hic?
+                                 p.author.text-capitalize.mt-4.text-right - persona 1
+                              .carousel-item.u-transition
+                                 p.paragraph Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates ad nulla, tempore rem earum error vel perferendis expedita maiores hic?
+                                 p.author.text-capitalize.mt-4.text-right - persona 2
+                              .carousel-item.u-transition
+                                 p.paragraph Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates ad nulla, tempore rem earum error vel perferendis expedita maiores hic?
+                                 p.author.text-capitalize.mt-4.text-right - persona 3
+                           a.carousel-control-prev(href="#testimoniales-slider" role="button" data-slide="prev") 
+                              span.carousel-control-prev-icon(aria-hidden="true")
+                              span.sr-only Testimonial anterior
+                           a.carousel-control-next(href="#testimoniales-slider" role="button" data-slide="next") 
+                              span.carousel-control-next-icon(aria-hidden="true")
+                              span.sr-only Testimonial siguiente
+   
 
             
