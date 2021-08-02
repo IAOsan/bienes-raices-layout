@@ -1,0 +1,42 @@
+mixin advertisement(img='anuncio1.jpg', title='Titulo', price="0.00", link='#', servicios=[3,3,3])
+   article.card.mb-4
+      img.card-img-top(src=`assets/img/${img}`, alt='')
+      .card-body
+         h4.card-title.text-capitalize #{title}
+         if block 
+            block
+         else 
+            p.card-text Sin descripcion
+         p.price $#{price}
+         ul.card-servicios.list-unstyled.d-flex.justify-content-between.align-items-center.py-2
+            li.item
+               span.icon.wc.mr-3(aria-hidden="true")
+               span.sr-only Baños
+               |#{servicios[0]}
+            li.item
+               span.icon.rooms.mr-3(aria-hidden="true")
+               span.sr-only Cuartos
+               |#{servicios[1]}
+            li.item
+               span.icon.parking.mr-3(aria-hidden="true")
+               span.sr-only Estacionamientos
+               |#{servicios[2]}
+         a.btn.btn-orange.btn-block.text-uppercase.text-white.py-2(href=link) ver propiedad
+
+mixin post(img='blog1.jpg', title='Titulo', meta=['fecha', 'autor'], link='#')
+   article.post.mb-5
+      .row
+         .col-lg-4.col-md-5
+            img.w-100.h-100(src=`assets/img/${img}`, alt="")
+         .col-lg-8.col-md-7
+            h4.heading.py-2 #{title}
+            p.meta 
+               | Escrito el: 
+               span #{meta[0]} 
+               | por: 
+               span #{meta[1]}
+            if block
+               block
+            else 
+               p SIN DESCRIPCION
+            a.btn.text-uppercase(href=link) leer más
