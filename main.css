@@ -98,15 +98,15 @@ h6 {
   height: 2rem;
 }
 .card .wc {
-  background: url("../assets/img/icono_wc.png") center no-repeat;
+  background: url("./assets/img/icono_wc.png") center no-repeat;
   background-size: contain;
 }
 .card .rooms {
-  background: url("../assets/img/icono_cuartos.png") center no-repeat;
+  background: url("./assets/img/icono_cuartos.png") center no-repeat;
   background-size: contain;
 }
 .card .parking {
-  background: url("../assets/img/icono_estacionamiento.png") center no-repeat;
+  background: url("./assets/img/icono_estacionamiento.png") center no-repeat;
   background-size: contain;
 }
 
