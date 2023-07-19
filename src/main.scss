@@ -2,298 +2,357 @@
 /*                                   mixins                                   */
 /* -------------------------------------------------------------------------- */
 @mixin respond($breakpoint, $type: 'min-width') {
-   @media only screen and(#{$type}: #{$breakpoint / 16}em) {
-      @content;
-   }
+	@media only screen and(#{$type}: #{$breakpoint / 16}em) {
+		@content;
+	}
 }
 /* -------------------------------------------------------------------------- */
 /*                                    base                                    */
 /* -------------------------------------------------------------------------- */
 :root {
-   // colors
-   --c-primary: #71b100;
-   --c-primary-d: #588b00;
-   --c-secondary: #e08709;
-   --c-secondary-d: #c7780a;
-   // general
-   --transition: all 300ms;
-   --transition-s: all 500ms;
-   --border: 2px solid red;
+	// colors
+	--c-primary-50: #e6f6f4;
+	--c-primary-100: #b0e4dd;
+	--c-primary-200: #8ad7cc;
+	--c-primary-300: #54c5b5;
+	--c-primary-400: #33baa7;
+	--c-primary-500: #00a991;
+	--c-primary-600: #009a84;
+	--c-primary-700: #007867;
+	--c-primary-800: #005d50;
+	--c-primary-900: #00473d;
+	--c-secondary-50: #f5f1ed;
+	--c-secondary-100: #e1d2c6;
+	--c-secondary-200: #d3bdaa;
+	--c-secondary-300: #bf9f83;
+	--c-secondary-400: #b28c6b;
+	--c-secondary-500: #9f6f46;
+	--c-secondary-600: #916540;
+	--c-secondary-700: #714f32;
+	--c-secondary-800: #573d27;
+	--c-secondary-900: #432f1d;
+	--c-light-500: #f5f5f5;
+	--c-dark-50: #ebebeb;
+	--c-dark-100: #c0c0c0;
+	--c-dark-200: #a1a1a1;
+	--c-dark-300: #767676;
+	--c-dark-400: #5c5c5c;
+	--c-dark-500: #333333;
+	--c-dark-600: #2e2e2e;
+	--c-dark-700: #242424;
+	--c-dark-800: #1c1c1c;
+	--c-dark-900: #151515;
+	// general
+	--transition: all 300ms;
+	--transition-s: all 500ms;
+	--border: 2px solid red;
+	--body-font: 'Lato', sans-serif;
 }
 
 body {
-   font-family: 'Lato', sans-serif;
+	background-color: var(--c-light-500);
+	color: var(--c-dark-500);
+	font-family: var(--body-font);
 }
 
 h1,
 h2,
 h3,
-h4 {
-   font-weight: 300;
+h4,
+h5,
+h6 {
+	font-weight: 300;
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                    utils                                   */
-/* -------------------------------------------------------------------------- */
-
-.u-transition {
-   transition: var(--transition) ease-in-out;
+::-moz-selection {
+	background-color: var(--c-primary-100);
 }
-.u-transition-s {
-   transition: var(--transition-s) ease-in-out;
+
+::selection {
+	background-color: var(--c-primary-100);
 }
 /* -------------------------------------------------------------------------- */
 /*                                 components                                 */
 /* -------------------------------------------------------------------------- */
 .carousel {
-   &-caption {
-      .heading-1 {
-         font-size: 2.4rem;
-         font-weight: 300;
-      }
-      .heading-2 {
-         background-color: var(--c-primary);
-      }
-      .price {
-         font-size: 1.4rem;
-      }
-      .btn {
-         &,
-         &:active,
-         &:hover {
-            background-color: var(--c-secondary);
-            color: #fff;
-            font-weight: 700;
-         }
-         &:hover {
-            background-color: var(--c-secondary-d);
-         }
-      }
-   }
+	&-caption {
+		.heading-1 {
+			font-size: 2.4rem;
+			font-weight: 300;
+		}
+		.heading-2 {
+			background-color: var(--c-primary-500);
+		}
+		.price {
+			font-size: 1.4rem;
+		}
+		.btn {
+			&,
+			&:active,
+			&:hover {
+				background-color: var(--c-secondary-500);
+				color: var(--c-light-500);
+				font-weight: 700;
+			}
+			&:hover {
+				background-color: var(--c-secondary-700);
+			}
+		}
+	}
 }
 .card {
-   .price {
-      font-size: 1.1rem;
-      color: var(--c-primary);
-   }
-   .icon {
-      display: inline-block;
-      vertical-align: middle;
-      width: 2rem;
-      height: 2rem;
-   }
-   .wc {
-      background: url('../assets/img/icono_wc.png') center no-repeat;
-      background-size: contain;
-   }
-   .rooms {
-      background: url('../assets/img/icono_cuartos.png') center no-repeat;
-      background-size: contain;
-   }
-   .parking {
-      background: url('../assets/img/icono_estacionamiento.png') center
-         no-repeat;
-      background-size: contain;
-   }
+	.price {
+		font-size: 1.1rem;
+		color: var(--c-primary-700);
+	}
+	.icon {
+		display: inline-block;
+		vertical-align: middle;
+		width: 2rem;
+		height: 2rem;
+	}
+	.wc {
+		background: url('../assets/img/icono_wc.png') center no-repeat;
+		background-size: contain;
+	}
+	.rooms {
+		background: url('../assets/img/icono_cuartos.png') center no-repeat;
+		background-size: contain;
+	}
+	.parking {
+		background: url('../assets/img/icono_estacionamiento.png') center
+			no-repeat;
+		background-size: contain;
+	}
 }
 .post {
-   .heading {
-      position: relative;
-      &::before {
-         content: '';
-         position: absolute;
-         bottom: 0;
-         left: 0;
-         width: 25%;
-         height: 0.15rem;
-         background-color: var(--c-primary);
-      }
-   }
-   .meta {
-      span {
-         color: var(--c-secondary);
-      }
-   }
-   .btn {
-      &,
-      &:active,
-      &:hover {
-         background-color: var(--c-primary);
-         color: #fff;
-         transition: var(--transition);
-      }
-      &:hover {
-         background-color: var(--c-primary-d);
-      }
-   }
+	img {
+		border-radius: 0.275rem;
+		object-fit: cover;
+	}
+	.heading {
+		position: relative;
+		&::before {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 25%;
+			height: 0.15rem;
+			background-color: var(--c-primary-500);
+		}
+	}
+	.meta {
+		span {
+			color: var(--c-secondary-500);
+		}
+	}
+	.btn {
+		&,
+		&:active,
+		&:hover {
+			background-color: var(--c-primary-500);
+			color: var(--c-light-500);
+			transition: var(--transition);
+		}
+		&:hover {
+			background-color: var(--c-primary-700);
+		}
+	}
 }
 .btn {
-   &-orange {
-      &,
-      &:active,
-      &:focus {
-         background-color: var(--c-secondary);
-         color: #fff;
-         transition: var(--transition);
-      }
-      &:hover {
-         background-color: var(--c-secondary-d);
-      }
-   }
+	&-orange {
+		&,
+		&:active,
+		&:focus {
+			background-color: var(--c-secondary-500);
+			color: var(--c-light-500);
+			transition: var(--transition);
+		}
+		&:hover {
+			background-color: var(--c-secondary-700);
+			color: var(--c-light-500);
+		}
+	}
 }
 /* -------------------------------------------------------------------------- */
 /*                                   layout                                   */
 /* -------------------------------------------------------------------------- */
 .navigation {
-   background-color: var(--c-primary);
-   transition: var(--transition-s);
-   @include respond(992) {
-      background-color: transparent;
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 100;
-   }
+	background-color: var(--c-primary-500);
+	transition: var(--transition-s);
+	@include respond(992) {
+		background-color: transparent;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		z-index: 100;
+	}
 }
 
 .navbar {
-   .navbar-brand {
-      font-size: 2rem;
-      font-weight: 300;
-      @include respond(576, 'max-width') {
-         font-size: 1.5rem;
-      }
-      strong {
-         font-weight: 900;
-      }
-   }
-   .nav-link {
-      &,
-      &:active,
-      &:hover {
-         color: rgba($color: #fff, $alpha: 0.9) !important;
-         font-weight: 700;
-         text-transform: uppercase;
-         position: relative;
-         &:before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            height: 0;
-            width: 100%;
-            background-color: var(--c-secondary);
-            z-index: 100;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-         }
-      }
-      &:hover {
-         color: rgba($color: #fff, $alpha: 1) !important;
-      }
-      @include respond(992) {
-         &:hover::before {
-            opacity: 1;
-            visibility: visible;
-            height: 3px;
-         }
-      }
-   }
-   .dropdown {
-      &-menu {
-         background-color: var(--c-primary);
-      }
-      &-item {
-         &,
-         &:active,
-         &:hover {
-            color: #fff;
-            transition: var(--transition);
-            text-transform: uppercase;
-         }
-         &:hover {
-            background-color: var(--c-secondary);
-         }
-      }
-   }
+	.navbar-brand {
+		font-size: 2rem;
+		font-weight: 300;
+		@include respond(576, 'max-width') {
+			font-size: 1.5rem;
+		}
+		strong {
+			font-weight: 900;
+		}
+	}
+	.nav-link {
+		&,
+		&:active,
+		&:hover {
+			color: rgba($color: #fff, $alpha: 0.75) !important;
+			font-weight: 700;
+			text-transform: uppercase;
+			position: relative;
+			&:before {
+				content: '';
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				height: 0;
+				width: 100%;
+				background-color: var(--c-light-500);
+				z-index: 100;
+				opacity: 0;
+				visibility: hidden;
+				transition: var(--transition);
+			}
+		}
+		&:hover {
+			color: rgba($color: #fff, $alpha: 1) !important;
+		}
+		@include respond(992) {
+			&:hover::before {
+				opacity: 1;
+				visibility: visible;
+				height: 3px;
+			}
+		}
+	}
+	.dropdown {
+		&-menu {
+			background-color: var(--c-primary-500);
+		}
+		&-item {
+			&,
+			&:active,
+			&:hover {
+				color: var(--c-light-500);
+				transition: var(--transition);
+				text-transform: uppercase;
+			}
+			&:hover {
+				background-color: var(--c-primary-700);
+			}
+		}
+	}
 }
-
+/* -------------------------------------------------------------------------- */
+/*                                    utils                                   */
+/* -------------------------------------------------------------------------- */
+.bg {
+	&-dark {
+		background-color: var(--c-dark-700) !important;
+	}
+}
+.font {
+	&-w-bold {
+		font-weight: 700;
+	}
+	&-w-regular {
+		font-weight: 400;
+	}
+	&-w-thin {
+		font-weight: 300;
+	}
+}
+.u-transition {
+	transition: var(--transition) ease-in-out;
+}
+.u-transition-s {
+	transition: var(--transition-s) ease-in-out;
+}
 /* -------------------------------------------------------------------------- */
 /*                                    home                                    */
 /* -------------------------------------------------------------------------- */
 .header {
-   .carousel-item {
-      @include respond(1200) {
-         height: 100vh;
-      }
-   }
-   .carousel-item img {
-      @include respond(1200) {
-         width: 100%;
-         height: 100%;
-         object-fit: cover;
-      }
-   }
+	.carousel-item {
+		@include respond(1200) {
+			height: 100vh;
+		}
+	}
+	.carousel-item img {
+		@include respond(1200) {
+			width: 100%;
+			height: 100%;
+			-o-object-fit: cover;
+			object-fit: cover;
+		}
+	}
 }
 .about-us {
-   .heading-sub {
-      font-weight: 700;
-      font-size: 1rem;
-   }
-   .icon {
-      display: inline-block;
-      width: 9rem;
-      height: 7rem;
-      margin-bottom: 2rem;
-   }
-   .security {
-      background: url(../assets/img/icono_seguridad.jpg) center no-repeat;
-      background-size: contain;
-   }
-   .price {
-      background: url(../assets/img/icono_precio.jpg) center no-repeat;
-      background-size: contain;
-   }
-   .time {
-      background: url(../assets/img/icono_disponible.jpg) center no-repeat;
-      background-size: contain;
-   }
+	.heading-sub {
+		font-weight: 700;
+		font-size: 1rem;
+	}
+	.icon {
+		display: inline-block;
+		width: 9rem;
+		height: 7rem;
+		margin-bottom: 2rem;
+	}
+	.security {
+		background: url(../assets/img/icono_seguridad.svg) center no-repeat;
+		background-size: contain;
+	}
+	.price {
+		background: url(../assets/img/icono_precio.svg) center no-repeat;
+		background-size: contain;
+	}
+	.time {
+		background: url(../assets/img/icono_disponible.svg) center no-repeat;
+		background-size: contain;
+	}
 }
 
 .banner {
-   background: url('../assets/img/contacto.jpg') center no-repeat;
-   background-size: cover;
-   padding: 7.6rem 0;
-   .heading {
-      font-size: 2.2rem;
-      font-weight: 900;
-   }
+	background: url('../assets/img/contact.jpg') center top no-repeat;
+	background-size: cover;
+	padding: 7.6rem 0;
+	.heading {
+		font-size: 2.2rem;
+		font-weight: 900;
+	}
 }
 
 .testimonials {
-   background-color: var(--c-primary);
-   color: #fff;
-   .carousel-item {
-      padding-left: 2.5rem;
-   }
-   .paragraph {
-      font-size: 1.4rem;
-      position: relative;
-      line-height: 1.8;
-      font-weight: 300;
-      &::before {
-         content: open-quote;
-         font-size: 4rem;
-         position: absolute;
-         top: -3rem;
-         left: -3rem;
-         font-weight: 900;
-      }
-   }
-   .author {
-      font-size: 1.5rem;
-      font-weight: 900;
-   }
+	background-color: var(--c-primary-500);
+	color: var(--c-light-500);
+	.carousel-item {
+		padding-left: 2.5rem;
+	}
+	.paragraph {
+		font-size: 1.4rem;
+		position: relative;
+		line-height: 1.8;
+		font-weight: 300;
+		&::before {
+			content: open-quote;
+			font-size: 4rem;
+			position: absolute;
+			top: -3rem;
+			left: -3rem;
+			font-weight: 900;
+		}
+	}
+	.author {
+		font-size: 1.5rem;
+		font-weight: 900;
+	}
 }
