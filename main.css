@@ -272,20 +272,20 @@ h6 {
   margin-bottom: 2rem;
 }
 .about-us .security {
-  background: url(../assets/img/icono_seguridad.svg) center no-repeat;
+  background: url(./assets/img/icono_seguridad.svg) center no-repeat;
   background-size: contain;
 }
 .about-us .price {
-  background: url(../assets/img/icono_precio.svg) center no-repeat;
+  background: url(./assets/img/icono_precio.svg) center no-repeat;
   background-size: contain;
 }
 .about-us .time {
-  background: url(../assets/img/icono_disponible.svg) center no-repeat;
+  background: url(./assets/img/icono_disponible.svg) center no-repeat;
   background-size: contain;
 }
 
 .banner {
-  background: url("../assets/img/contact.jpg") center top no-repeat;
+  background: url("./assets/img/contact.jpg") center top no-repeat;
   background-size: cover;
   padding: 7.6rem 0;
 }
