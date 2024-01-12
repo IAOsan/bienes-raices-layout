@@ -1,42 +1,39 @@
-mixin advertisement(img='anuncio1.jpg', title='Titulo', price="0.00", link='#', servicios=[3,3,3])
-   article.card.mb-4
-      img.card-img-top(src=`assets/img/${img}`, alt='')
-      .card-body
-         h4.card-title.text-capitalize #{title}
+mixin advertisement(image, title, price, link, services)
+   article.card.card-house
+      .card-image
+         img(src=`./assets/img/${image}` alt="")
+      .card-content
+         span.card-title #{title}
+         p Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, consectetur.
+         p.teal-text.py-3.card-price $#{price}
+         .row.py-1
+            .col.s2
+               span.icon.wc
+            .col.s2
+               span #{services[0]}
+            .col.s2
+               span.icon.rooms
+            .col.s2
+               span #{services[1]}
+            .col.s2
+               span.icon.parking
+            .col.s2
+               span #{services[2]}
+         a.waves-effect.waves-light.btn-large.btn-orange.btn-block(href=link) mas información
+
+mixin post(image, title, meta, link)
+   article.post
+      .col1
+         img.z-depth-2(src=`./assets/img/${image}` alt="")
+      .col2
+         h5.heading #{title}
+         p
+         | Escrito el: 
+         span.highlight #{meta.date} 
+         | por: 
+         span.highlight #{meta.user} 
          if block 
             block
-         else 
-            p.card-text Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis, consectetur.
-         p.price $#{price}
-         ul.card-servicios.list-unstyled.d-flex.justify-content-between.align-items-center.py-2
-            li.item
-               span.icon.wc.mr-3(aria-hidden="true")
-               span.sr-only Baños
-               |#{servicios[0]}
-            li.item
-               span.icon.rooms.mr-3(aria-hidden="true")
-               span.sr-only Cuartos
-               |#{servicios[1]}
-            li.item
-               span.icon.parking.mr-3(aria-hidden="true")
-               span.sr-only Estacionamientos
-               |#{servicios[2]}
-         a.btn.btn-orange.btn-block.text-uppercase.text-white.py-2(href=link) ver propiedad
-
-mixin post(img='blog1.jpg', title='Titulo', meta=['fecha', 'autor'], link='#')
-   article.post.mb-5
-      .row
-         .col-lg-4.col-md-5
-            img.w-100.h-100(src=`assets/img/${img}`, alt="")
-         .col-lg-8.col-md-7
-            h4.heading.py-2 #{title}
-            p.meta 
-               | Escrito el: 
-               span #{meta[0]} 
-               | por: 
-               span #{meta[1]}
-            if block
-               block
-            else 
-               p SIN DESCRIPCION
-            a.btn.text-uppercase(href=link) leer más
+         else
+            p.py-2 Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nulla qui provident doloribus, incidunt ipsa magni temporibus iure ad quod?
+         a.waves-effect.waves-light.btn(href=link) Leer mas

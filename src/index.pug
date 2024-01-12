@@ -1,114 +1,87 @@
 extends ./pug/templates/template
 block home
-      //- ------------------------------------------------------------------------ -//
-      //-                                  header                                  -//
-      //- ------------------------------------------------------------------------ -//
-      header.header
-         #slider-principal.carousel.slide(data-ride="carousel")
-            ol.carousel-indicators
-               li.active(data-target="#slider-principal" data-slide-to="0")
-               li(data-target="#slider-principal" data-slide-to="1")
-            .carousel-inner
-               .carousel-item.active.u-transition-s
-                  img.d-block.w-100(src="assets/img/slide1.jpg", alt="Primer slider")
-                  .container.p-0m-0
-                     .row.no-gutters.justify-content-between
-                        .col-lg-6
-                           .carousel-caption.d-none.d-lg-block.text-left
-                              h2.heading-1 Casa de lujo en Zona Exclusiva
-                        .col-lg-4
-                           .carousel-caption.d-none.d-md-block
-                              h4.heading-2.text-uppercase.py-3 en venta
-                              p.price $ 125,000
-                              a.btn.btn-block.text-uppercase(href="#") mas información
-               .carousel-item.u-transition-s
-                  img.d-block.w-100(src="assets/img/slide2.jpg", alt="Segundo slider")
-                  .carousel-caption.d-none.d-md-block
-                     h2.heading-1.text-center Encuentra propiedades de lujo
-            a.carousel-control-prev(href="#slider-principal" role="button" data-slide="prev") 
-               span.carousel-control-prev-icon(aria-hidden="true")
-               span.sr-only Imagen previa
-            a.carousel-control-next(href="#slider-principal" role="button" data-slide="next") 
-               span.carousel-control-next-icon(aria-hidden="true")
-               span.sr-only Imagen siguiente
-      main
-         //- ------------------------------------------------------------------------ -//
-         //-                                 about us                                 -//
-         //- ------------------------------------------------------------------------ -//
-         section.container.about-us.text-center.my-5
-            h2.mb-5.text-capitalize más sobre nosotros
-            .row.px-md-3.px-lg-0
-               .col-lg-4.col-md-4.mb-4.mb-md-0
-                  span.icon.security 
-                  h3.heading-sub.text-uppercase.mb-3 seguridad
+   //- ------------------------------------------------------------------------ -//
+   //-                                  header                                  -//
+   //- ------------------------------------------------------------------------ -//
+   header.header
+      .slider
+         ul.slides
+            li.slider-item.slider-item-1
+               img(src="./assets/img/slide1.jpg" alt="Primer slide")
+               .caption.center-align.slider-caption
+                  .row
+                     .col.l6
+                        h3.heading-1.left-align Casa de lujo en Zona Exclusiva
+                     .col.s12.l4.offset-l2
+                        h5.teal.p-2.heading-2 EN VENTA
+                        p.flow-text $ 125,000
+                        a.btn.btn-orange.btn-block.bold(href="#") mas información
+            li.slider-item
+               img(src="./assets/img/slide2.jpg" alt="Segundo slide")
+               .caption.center-align.slider-caption
+                  h3.heading-1 Encuentra propiedades de lujo
+   main
+      //- about us
+      section.about-us.py-4
+         h4.center-align.mb-4 Más sobre nosotros
+         .container.center-align
+            .row
+               .col.s12.m4
+                  span.icon.security
+                  h6.font-w-bold SEGURIDAD
                   p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum aliquid iure excepturi velit quos?
-               .col-lg-4.col-md-4.mb-4.mb-md-0
-                  span.icon.price 
-                  h3.heading-sub.text-uppercase.mb-3 el mejor precio
+               .col.s12.m4
+                  span.icon.price
+                  h6.font-w-bold EL MEJOR PRECIO
                   p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum aliquid iure excepturi velit quos?
-               .col-lg-4.col-md-4
-                  span.icon.time 
-                  h3.heading-sub.text-uppercase.mb-3 disponibilidad inmediata
+               .col.s12.m4
+                  span.icon.time
+                  h6.font-w-bold DISPONIBILIDAD INMEDIATA
                   p Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium illum aliquid iure excepturi velit quos?
-         //- ------------------------------------------------------------------------ -//
-         //-                                  houses                                  -//
-         //- ------------------------------------------------------------------------ -//
-         section.container.adventisements
-            h2.text-capitalize.text-center.mb-5 casas y departamentos en venta
-            .row.px-md-4.px-lg-0
-               .col-lg-4.col-md-6
-                  +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-               .col-lg-4.col-md-6
-                  +advertisement('anuncio2.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-               .col-lg-4.col-md-6
-                  +advertisement('anuncio3.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-               .col-lg-4.col-md-6
-                  +advertisement('anuncio4.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-               .col-lg-4.col-md-6
-                  +advertisement('anuncio5.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-               .col-lg-4.col-md-6
-                  +advertisement('anuncio6.jpg', 'Casa en zona de lujo', '1200,000', '#', [3,3,2])
-         //- ------------------------------------------------------------------------ -//
-         //-                                  banner                                  -//
-         //- ------------------------------------------------------------------------ -//
-         section.banner
-            .parrafo
-            .container.text-white
-               h3.heading Encuentra la casa de tus sueños
-               p.mb-5 LLena los formularios de contacto y un asesor se pondra en contacto contigo a la brevedad
-               a.btn.btn-orange.text-uppercase.py-2(href="#") contáctanos
-         //- ------------------------------------------------------------------------ -//
-         //-                                   blog                                   -//
-         //- ------------------------------------------------------------------------ -//
-         section.my-5
-            .container
-               .row
-                  .col-lg-8
-                     h2.text-capitalize.text-center.mb-5 nuestro blog
-                     +post('blog1.jpg', 'Terraza en el techo de tu casa.', ['20/10/2021','Admin'])
-                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis nulla qui provident doloribus, incidunt ipsa magni temporibus iure ad quod?
-                     +post('blog2.jpg', 'Guia para decorar tu casa.', ['30/12/2021','Admin'])
-                        p Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos perspiciatis culpa dicta nihil quaerat similique voluptatibus animi corrupti voluptate minima?
-                  .col-lg-4
-                     h2.text-capitalize.text-center.mb-5 testimoniales
-                     .testimonials
-                        #testimoniales-slider.carousel.slide(data-ride="carousel")
-                           .carousel-inner.p-5
-                              .carousel-item.active.u-transition
-                                 p.paragraph Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates ad nulla, tempore rem earum error vel perferendis expedita maiores hic?
-                                 p.author.text-capitalize.mt-4.text-right - persona 1
-                              .carousel-item.u-transition
-                                 p.paragraph Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates ad nulla, tempore rem earum error vel perferendis expedita maiores hic?
-                                 p.author.text-capitalize.mt-4.text-right - persona 2
-                              .carousel-item.u-transition
-                                 p.paragraph Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptates ad nulla, tempore rem earum error vel perferendis expedita maiores hic?
-                                 p.author.text-capitalize.mt-4.text-right - persona 3
-                           a.carousel-control-prev(href="#testimoniales-slider" role="button" data-slide="prev") 
-                              span.carousel-control-prev-icon(aria-hidden="true")
-                              span.sr-only Testimonial anterior
-                           a.carousel-control-next(href="#testimoniales-slider" role="button" data-slide="next") 
-                              span.carousel-control-next-icon(aria-hidden="true")
-                              span.sr-only Testimonial siguiente
-   
-
-            
+      //- houses
+      section.py-4
+         .container
+            h4.center-align.mb-4 Casas y departamentos en venta
+            .row
+               .col.s12.m6.l4
+                  +advertisement('anuncio1.jpg', 'Casa en zona de lujo', '125,000', '#', [3,3,2])
+               .col.s12.m6.l4
+                  +advertisement('anuncio2.jpg', 'Casa en zona de lujo', '125,000', '#', [3,3,2])
+               .col.s12.m6.l4
+                  +advertisement('anuncio3.jpg', 'Casa en zona de lujo', '125,000', '#', [3,3,2])
+               .col.s12.m6.l4
+                  +advertisement('anuncio4.jpg', 'Casa en zona de lujo', '125,000', '#', [3,3,2])
+               .col.s12.m6.l4
+                  +advertisement('anuncio5.jpg', 'Casa en zona de lujo', '125,000', '#', [3,3,2])
+               .col.s12.m6.l4
+                  +advertisement('anuncio6.jpg', 'Casa en zona de lujo', '125,000', '#', [3,3,2])
+      //- banner
+      section.banner.py-4.my-4
+         .container
+            h3.white-text.heading Encuentra la case de tus sueños
+            p.white-text.mb-5 LLena los formularios de contacto y un asesor se pondra en contacto contigo a la brevedad
+            a.waves-effect.waves-light.btn-large.btn-orange(href='#') Contactanos
+      //- blog
+      section.py-4
+         .container
+            .row
+               .col.s12.l8
+                  h4.center-align.mb-4 Nuestro blog
+                  +post('blog1.jpg', 'Terraza en el techo de tu casa', {date: '20/10/21', user: 'Admin'}, '#')
+                  +post('blog2.jpg', 'Guia para decorar tu casa', {date: '20/12/21', user: 'Admin'}, '#')
+               .col.s12.m8.l4.offset-m2
+                  h4.center-align.mb-4 Testimoniales
+                  .slider.testimonials
+                     ul.slides.teal.white-text
+                        li
+                           .caption.left-align
+                              p.paragraph Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel distinctio sunt eos nemo voluptatibus quasi veniam dolor delectus, tenetur autem!
+                              p.author.right-align - Persona 1
+                        li
+                           .caption.left-align
+                              p.paragraph Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae vel architecto quasi nemo nam fugit! 
+                              p.author.right-align - Persona 2
+                        li
+                           .caption.left-align
+                              p.paragraph Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repudiandae vel architecto quasi nemo nam fugit! 
+                              p.author.right-align - Persona 3

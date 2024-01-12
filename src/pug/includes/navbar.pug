@@ -1,0 +1,39 @@
+.navigation
+   .container
+      nav.navbar
+         ul.dropdown.dropdown-content(id='dropdown1')
+            li
+               a.dropdown-link(href="#") CASA 1
+            li
+               a.dropdown-link(href="#") CASA 2
+            li
+               a.dropdown-link(href="#") CASA 3
+         .nav-wrapper
+            a.brand-logo(href="#")
+               | REALSTATE
+               b ALTO
+            a.sidenav-trigger(href="#" data-target="mobile-nav")
+               i.material-icons menu
+            ul.right.hide-on-med-and-down(id='nav-mobile')
+               li.navbar-link
+                  a(href="#") INICIO
+               li.navbar-link
+                  a(href="#") NOSOTROS
+               //- dropdown trigger
+               li.navbar-link
+                  a.dropdown-trigger(href='#!' data-target='dropdown1')
+                     | ANUNCIOS
+                     i.material-icons.right arrow_drop_down
+               li.navbar-link
+                  a(href="#") CONTACTO
+aside.sidenav(id='mobile-nav')
+   li
+      a(href="#") INICIO
+   li
+      a(href="#") NOSOTROS
+   li
+      a.dropdown-trigger(href='#!' data-target='dropdown1')
+         | ANUNCIOS
+         i.material-icons.right arrow_drop_down
+   li
+      a(href="#") CONTACTO

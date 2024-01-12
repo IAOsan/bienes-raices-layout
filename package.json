@@ -4,6 +4,17 @@
 	"main": "index.js",
 	"license": "MIT",
 	"scripts": {
-		"dev": "browser-sync start --server './' --files './' --no-open"
+		"compile-pug": "pug src/index.pug --basedir /src --out ./ -O pugconfig.js",
+		"compile-pug:watch": "pug --watch src/index.pug --basedir /src --out ./ -O pugconfig.js",
+		"compile-sass": "sass src/main.scss ./main.css",
+		"compile-sass:watch": "sass src/main.scss ./main.css --watch",
+		"live-server": "browser-sync -w --no-open",
+		"dev": "concurrently \"yarn compile-pug:watch\" \"yarn compile-sass:watch\" \"yarn live-server\""
+	},
+	"devDependencies": {
+		"concurrently": "8.2.2",
+		"sass": "1.69.7",
+		"pug-cli": "1.0.0-alpha6",
+		"browser-sync": "2.29.3"
 	}
 }

@@ -8,52 +8,20 @@ html(lang='es')
       link(rel="icon" type="image/svg+xml" href="./assets/img/favicon.svg" sizes="any")
       meta(name='Description' content='Casas de lujo en zona exclusiva')
       //- fonts
+      link(href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet")
       link(rel="preconnect" href="https://fonts.googleapis.com")
       link(rel="preconnect" href="https://fonts.gstatic.com" crossorigin)
       link(href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet")
-      //- bootstrap
-      link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css')
-      //- normalize
-      link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer")
-      link(rel='stylesheet' href='./main.css')
-      title BienesRaices
+      //- materialize
+      link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css")
+      //- css
+      link(rel="stylesheet" href="./main.css")
+   title BienesRaices
    body
-      .navigation
-         .container
-            nav.navbar.navbar-dark.navbar-expand-lg
-               a.navbar-brand.text-uppercase(href="index.html") realstate
-                  strong ALTO
-               button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbar-main' aria-controls='navbar-main' aria-expanded='false' aria-label='Mostrar navegacion')
-                  span.navbar-toggler-icon
-               #navbar-main.collapse.navbar-collapse.u-transition
-                  ul.navbar-nav.w-100.justify-content-end
-                     li.nav-item
-                        a.nav-link(href="#") inicio
-                     li.nav-item
-                        a.nav-link(href="#") nosotros
-                     li.nav-item.dropdown
-                        a#navbar-dropdown-nosotros.nav-link.dropdown-toggle(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") anuncios
-                        .dropdown-menu(aria-labelledby="navbar-dropdown-nosotros")
-                           a.dropdown-item(href="#") casa 1
-                           a.dropdown-item(href="#") casa 2
-                           a.dropdown-item(href="#") casa 3
-                     li.nav-item
-                        a.nav-link(href="#") contacto
+      include ../includes/navbar.pug
       block home
-      footer.bg-dark
-         .container
-            .row.align-items-centerjustify-content-center.py-4
-               ul.nav.text-uppercase.text-center.justify-content-center.justify-content-lg-start.flex-column.flex-md-row.col-lg-8
-                  li.nav-item
-                     a.nav-link.text-white(href="#") inicio
-                  li.nav-item
-                     a.nav-link.text-white(href="#") nosotros
-                  li.nav-item
-                     a.nav-link.text-white(href="#") anuncios
-                  li.nav-item
-                     a.nav-link.text-white(href="#") contacto
-               p.text-capitalize.text-muted.text-center.m-0.py-1.text-lg-right.mt-4.mt-lg-0.col-lg-4
-                  | 2021 derechos reservados
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js')
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js')
-      script(src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js')
+      include ../includes/footer.pug
+      //- materialize js
+      script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js")
+      //- custom js
+      script(src="./app.js") 

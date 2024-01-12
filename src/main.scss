@@ -2,7 +2,7 @@
 /*                                   mixins                                   */
 /* -------------------------------------------------------------------------- */
 @mixin respond($breakpoint, $type: 'min-width') {
-	@media only screen and(#{$type}: #{$breakpoint / 16}em) {
+	@media only screen and (#{$type}: #{calc($breakpoint / 16)}em) {
 		@content;
 	}
 }
@@ -74,36 +74,13 @@ h6 {
 /* -------------------------------------------------------------------------- */
 /*                                 components                                 */
 /* -------------------------------------------------------------------------- */
-.carousel {
-	&-caption {
-		.heading-1 {
-			font-size: 2.4rem;
-			font-weight: 300;
-		}
-		.heading-2 {
-			background-color: var(--c-primary-500);
-		}
-		.price {
-			font-size: 1.4rem;
-		}
-		.btn {
-			&,
-			&:active,
-			&:hover {
-				background-color: var(--c-secondary-500);
-				color: var(--c-light-500);
-				font-weight: 700;
-			}
-			&:hover {
-				background-color: var(--c-secondary-700);
-			}
-		}
+.card-house {
+	.card-image {
+		overflow: hidden !important;
+		object-fit: cover !important;
 	}
-}
-.card {
-	.price {
-		font-size: 1.1rem;
-		color: var(--c-primary-700);
+	.card-price {
+		font-size: 1.2rem;
 	}
 	.icon {
 		display: inline-block;
@@ -120,47 +97,59 @@ h6 {
 		background-size: contain;
 	}
 	.parking {
-		background: url('./assets/img/icono_estacionamiento.png') center
-			no-repeat;
+		background: url('./assets/img/icono_estacionamiento.png') center no-repeat;
 		background-size: contain;
 	}
 }
 .post {
 	img {
-		border-radius: 0.275rem;
+		display: block;
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
+		border-radius: 0.2rem;
 	}
 	.heading {
 		position: relative;
-		&::before {
+		&::after {
 			content: '';
-			position: absolute;
-			bottom: 0;
-			left: 0;
+			display: block;
+			margin-top: 0.4rem;
 			width: 25%;
-			height: 0.15rem;
-			background-color: var(--c-primary-500);
+			height: 0.2rem;
+			background-color: var(--c-primary-600);
 		}
 	}
-	.meta {
-		span {
-			color: var(--c-secondary-500);
+	.highlight {
+		color: var(--c-secondary-500);
+	}
+	&:not(:last-child) {
+		margin-bottom: 1.6rem;
+	}
+	@include respond(768) {
+		display: flex;
+		.col1 {
+			flex: 3;
+		}
+		.col2 {
+			flex: 4;
+			margin-left: 1.6rem;
 		}
 	}
-	.btn {
-		&,
-		&:active,
-		&:hover {
-			background-color: var(--c-primary-500);
-			color: var(--c-light-500);
-			transition: var(--transition);
+	@include respond(992) {
+		.col1 {
+			flex: 1;
 		}
-		&:hover {
-			background-color: var(--c-primary-700);
+		.col2 {
+			flex: 2;
 		}
 	}
 }
 .btn {
+	&-block {
+		display: block;
+		width: 100%;
+	}
 	&-orange {
 		&,
 		&:active,
@@ -180,19 +169,23 @@ h6 {
 /* -------------------------------------------------------------------------- */
 .navigation {
 	background-color: var(--c-primary-500);
-	transition: var(--transition-s);
 	@include respond(992) {
 		background-color: transparent;
 		position: absolute;
-		top: 0;
 		left: 0;
+		top: 0;
 		width: 100%;
-		z-index: 100;
+		z-index: 500;
 	}
 }
-
+//
 .navbar {
-	.navbar-brand {
+	background-color: var(--c-primary-500);
+	box-shadow: none;
+	@include respond(992) {
+		background-color: transparent;
+	}
+	.brand-logo {
 		font-size: 2rem;
 		font-weight: 300;
 		@include respond(576, 'max-width') {
@@ -202,7 +195,7 @@ h6 {
 			font-weight: 900;
 		}
 	}
-	.nav-link {
+	.navbar-link {
 		&,
 		&:active,
 		&:hover {
@@ -236,10 +229,8 @@ h6 {
 		}
 	}
 	.dropdown {
-		&-menu {
-			background-color: var(--c-primary-500);
-		}
-		&-item {
+		background-color: var(--c-primary-500);
+		&-link {
 			&,
 			&:active,
 			&:hover {
@@ -278,29 +269,125 @@ h6 {
 .u-transition-s {
 	transition: var(--transition-s) ease-in-out;
 }
+.p {
+	&-1 {
+		padding: 0.4em;
+	}
+	&-2 {
+		padding: 0.8em;
+	}
+	&-3 {
+		padding: 1.2em;
+	}
+	&-4 {
+		padding: 1.6em;
+	}
+	&y {
+		&-1 {
+			padding-top: 0.4em;
+			padding-bottom: 0.4em;
+		}
+		&-2 {
+			padding-top: 0.8em;
+			padding-bottom: 0.8em;
+		}
+		&-3 {
+			padding-top: 1.2em;
+			padding-bottom: 1.2em;
+		}
+		&-4 {
+			padding-top: 1.6em;
+			padding-bottom: 1.6em;
+		}
+	}
+}
+.m {
+	&-auto {
+		margin: 0 auto;
+	}
+	&-0 {
+		margin: 0;
+	}
+	&b {
+		&-1 {
+			margin-bottom: 0.4em;
+		}
+		&-2 {
+			margin-bottom: 0.8em;
+		}
+		&-3 {
+			margin-bottom: 1.2em;
+		}
+		&-4 {
+			margin-bottom: 1.6em;
+		}
+		&-5 {
+			margin-bottom: 2em;
+		}
+	}
+	&t {
+		&-4 {
+			margin-top: 1.6em;
+		}
+	}
+	&r {
+		&-1 {
+			margin-bottom: 0.4em;
+		}
+		&-2 {
+			margin-bottom: 0.8em;
+		}
+		&-3 {
+			margin-bottom: 1.2em;
+		}
+		&-4 {
+			margin-bottom: 1.6em;
+		}
+	}
+	&y {
+		&-1 {
+			margin-bottom: 0.4em;
+		}
+		&-2 {
+			margin-bottom: 0.8em;
+		}
+		&-3 {
+			margin-bottom: 1.2em;
+		}
+		&-4 {
+			margin-bottom: 1.6em;
+		}
+		&-5 {
+			margin-bottom: 2em;
+		}
+	}
+}
 /* -------------------------------------------------------------------------- */
 /*                                    home                                    */
 /* -------------------------------------------------------------------------- */
 .header {
-	.carousel-item {
-		@include respond(1200) {
-			height: 100vh;
-		}
+	.slider {
+		min-height: 106vh;
 	}
-	.carousel-item img {
-		@include respond(1200) {
-			width: 100%;
-			height: 100%;
-			-o-object-fit: cover;
-			object-fit: cover;
+	.slider-item {
+		min-height: 95%;
+	}
+	.slider-caption {
+		top: unset !important;
+		bottom: 4rem;
+	}
+	@include respond(768, 'max-width') {
+		.heading-1 {
+			font-size: 2rem;
+			text-align: center;
+		}
+		.heading-2 {
+			font-size: 1.6rem;
+			text-align: center;
 		}
 	}
 }
 .about-us {
-	.heading-sub {
-		font-weight: 700;
-		font-size: 1rem;
-	}
 	.icon {
 		display: inline-block;
 		width: 9rem;
@@ -332,22 +419,17 @@ h6 {
 }
 
 .testimonials {
-	background-color: var(--c-primary-500);
-	color: var(--c-light-500);
-	.carousel-item {
-		padding-left: 2.5rem;
-	}
 	.paragraph {
-		font-size: 1.4rem;
+		font-size: 1.2rem;
 		position: relative;
-		line-height: 1.8;
 		font-weight: 300;
+		margin-left: 2rem;
 		&::before {
 			content: open-quote;
-			font-size: 4rem;
+			font-size: 3rem;
 			position: absolute;
-			top: -3rem;
-			left: -3rem;
+			top: -2rem;
+			left: -2rem;
 			font-weight: 900;
 		}
 	}
