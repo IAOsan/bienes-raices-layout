@@ -9,7 +9,8 @@
 		"compile-sass": "sass src/main.scss ./main.css",
 		"compile-sass:watch": "sass src/main.scss ./main.css --watch",
 		"live-server": "browser-sync -w --no-open",
-		"dev": "concurrently \"yarn compile-pug:watch\" \"yarn compile-sass:watch\" \"yarn live-server\""
+		"start": "npm run compile-pug && npm run compile-sass && npm run live-server",
+		"dev": "concurrently \"npm run compile-pug:watch\" \"npm run compile-sass:watch\" \"npm run live-server\""
 	},
 	"devDependencies": {
 		"concurrently": "8.2.2",
